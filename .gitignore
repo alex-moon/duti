@@ -20,3 +20,5 @@
 
 .php_cs.cache
 
+/src/Duti/Bundle/Core/DataFixtures/ORM/*.yml
+

@@ -1,1 +1,49 @@
 {% extends ':layouts:generic.html.twig' %}
+
+{% block body %}
+<div id="wrapper" class="red">
+    <div class="container">
+        <form method="post">
+            <div class="row">
+                <div class="col-xs-3 col-form-label">Doing:</div>
+                <div class="col-xs-9">Project A</div>
+            </div>
+            <div class="row">
+                <label for="do" class="col-xs-3 col-form-label">Do:</label>
+                <div class="col-xs-6">
+                    <select name="do" id="do">
+                        <option>Project B</option>
+                        <option>Project C</option>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn-primary btn">Go</button>
+                </div>
+            </div>
+            <h2>Tasks</h2>
+            <table class="table">
+                <tr>
+                    <td>Work out why user dashboard isn't showing link to perms</td>
+                    <td>1:14:23</td>
+                    <td style="white-space: nowrap">
+                        <ul class="list-inline">
+                            <li><a href="/"><img src="{{ asset('tick.png') }}" alt="Complete" /></a></li>
+                            <li><a href="/"><img src="{{ asset('cross.png') }}" alt="Delete" /></a></li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set up perms for Alice Toklas</td>
+                    <td>0:00:00</td>
+                    <td style="white-space: nowrap">
+                        <ul class="list-inline">
+                            <li><a href="/"><img src="{{ asset('tick.png') }}" alt="Complete" /></a></li>
+                            <li><a href="/"><img src="{{ asset('cross.png') }}" alt="Delete" /></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock body %}

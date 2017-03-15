@@ -6,24 +6,13 @@
 
 namespace Duti\Bundle\Core\Entity;
 
-class Space
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Duti\Bundle\Core\Repository\SpaceRepository")
+ * @ORM\Table(name="space")
+ */
+class Space extends NameEntity
 {
-    /** @var string $name */
-    protected $name;
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
 }

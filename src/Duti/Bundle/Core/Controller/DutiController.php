@@ -2,10 +2,16 @@
 
 namespace Duti\Bundle\Core\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 
-class DutiController extends Controller
+class DutiController extends BaseController
 {
+    /**
+     * @Route(
+     *     name="core-duti-index",
+     *     path="/"
+     * )
+     */
     public function indexAction()
     {
         return $this->render('CoreBundle:Duti:index.html.twig');

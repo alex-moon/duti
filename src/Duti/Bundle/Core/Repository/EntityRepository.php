@@ -1,13 +1,16 @@
 <?php
+/**
+ * @maintainer Alex Moon <alex.moon@printed.com>
+ */
 
 namespace Duti\Bundle\Core\Repository;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\EntityRepository as DoctrineEntityRepository;
 
-abstract class AbstractEntityRepository extends EntityRepository implements ContainerAwareInterface
+class EntityRepository extends DoctrineEntityRepository implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
@@ -19,6 +22,10 @@ abstract class AbstractEntityRepository extends EntityRepository implements Cont
         }
     }
 
+    /**
+     * @param $entity
+     * @param bool $flush
+     */
     public function delete($entity, $flush = true)
     {
         $this->getEntityManager()->remove($entity);

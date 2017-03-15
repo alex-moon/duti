@@ -10,19 +10,7 @@ use Duti\Bundle\Core\Entity\Space;
 /**
  * @method Space findOneBy(array $criteria, array $orderBy = null)
  */
-class SpaceRepository extends AbstractEntityRepository
+class SpaceRepository extends NameEntityRepository
 {
-    /**
-     * @param string $name
-     *
-     * @return Space
-     */
-    public function getOrCreateByName($name)
-    {
-        $space = $this->findOneBy(['name' => $name])
-            ?: new Space($name);
-        $this->save($space, true);
 
-        return $space;
-    }
 }
