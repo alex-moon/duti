@@ -1,0 +1,3 @@
+services:
+    core.service.space:
+        class: Duti\Bundle\Core\Service\SpaceService
