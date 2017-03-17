@@ -1,47 +1,48 @@
 {% extends ':layouts:generic.html.twig' %}
 
 {% block body %}
-<div id="wrapper" class="red">
+<div id="wrapper" class="blue">
     <div class="container">
-        <form method="post">
-            <div class="row">
-                <div class="col-xs-3 col-form-label">Doing:</div>
-                <div class="col-xs-9">Project A</div>
+        <form method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-xs-2 control-label">Doing:</label>
+                <div class="col-xs-5">{{ currentProject.name }}</div>
+                <div class="col-xs-5">12:34:56</div>
             </div>
-            <div class="row">
-                <label for="do" class="col-xs-3 col-form-label">Do:</label>
-                <div class="col-xs-6">
-                    <select name="do" id="do">
-                        <option>Project B</option>
-                        <option>Project C</option>
+            <div class="form-group">
+                <label for="do" class="col-xs-2 control-label">Do:</label>
+                <div class="col-xs-5">
+                    <select name="do" id="do" class="form-control">
+                        {% for project in projects %}
+                            {% if project != currentProject %}
+                                <option value="{{ project.id }}">{{ project.name }}</option>
+                            {% endif %}
+                        {% endfor %}
                     </select>
                 </div>
-                <div class="col-xs-3">
-                    <button class="btn-primary btn">Go</button>
+                <div class="col-xs-5">
+                    <button class="btn-primary btn form-control">Go</button>
                 </div>
             </div>
             <h2>Tasks</h2>
-            <table class="table">
-                <tr>
-                    <td>Work out why user dashboard isn't showing link to perms</td>
-                    <td>1:14:23</td>
-                    <td style="white-space: nowrap">
-                        <ul class="list-inline">
-                            <li><a href="/"><img src="{{ asset('tick.png') }}" alt="Complete" /></a></li>
-                            <li><a href="/"><img src="{{ asset('cross.png') }}" alt="Delete" /></a></li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Set up perms for Alice Toklas</td>
-                    <td>0:00:00</td>
-                    <td style="white-space: nowrap">
-                        <ul class="list-inline">
-                            <li><a href="/"><img src="{{ asset('tick.png') }}" alt="Complete" /></a></li>
-                            <li><a href="/"><img src="{{ asset('cross.png') }}" alt="Delete" /></a></li>
-                        </ul>
-                    </td>
-                </tr>
+            <table class="table table-striped" style="background: white">
+                {% if currentProject.unfinishedTasks %}
+                    {% for task in currentProject.unfinishedTasks %}
+                        <tr>
+                            <td>{{ task.name }}</td>
+                            <td>{{ task.timeSoFar }}</td>
+                            <td style="white-space: nowrap">
+                                <ul class="list-inline">
+                                    <li><a href="/"><img src="{{ asset('clock.png') }}" alt="Clock in"</a></li>
+                                    <li><a href="/"><img src="{{ asset('tick.png') }}" alt="Complete" /></a></li>
+                                    <li><a href="/"><img src="{{ asset('cross.png') }}" alt="Delete" /></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr><td>There are no unfinished tasks in {{ currentProject }}</td></tr>
+                {% endif %}
             </table>
         </form>
     </div>

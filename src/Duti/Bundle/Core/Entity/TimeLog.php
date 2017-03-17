@@ -1,7 +1,4 @@
 <?php
-/**
- * @maintainer Alex Moon <alex.moon@printed.com>
- */
 
 namespace Duti\Bundle\Core\Entity;
 
@@ -19,4 +16,27 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class TimeLog extends Entity
 {
     use StartedEndedTrait;
+
+    /**
+     * @var WorkDay $workDay
+     * @ORM\ManyToOne(targetEntity="Duti\Bundle\Core\Entity\WorkDay")
+     * @ORM\JoinColumn(name="work_day_id", referencedColumnName="id")
+     */
+    protected $workDay;
+
+    /**
+     * @return WorkDay
+     */
+    public function getWorkDay()
+    {
+        return $this->workDay;
+    }
+
+    /**
+     * @param WorkDay $workDay
+     */
+    public function setWorkDay($workDay)
+    {
+        $this->workDay = $workDay;
+    }
 }

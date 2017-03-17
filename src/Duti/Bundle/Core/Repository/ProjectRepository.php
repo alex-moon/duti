@@ -1,7 +1,4 @@
 <?php
-/**
- * @maintainer Alex Moon <alex.moon@printed.com>
- */
 
 namespace Duti\Bundle\Core\Repository;
 
@@ -12,5 +9,4 @@ use Duti\Bundle\Core\Entity\Project;
  */
 class ProjectRepository extends NameEntityRepository
 {
-
 }

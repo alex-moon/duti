@@ -14,6 +14,11 @@ class DutiController extends BaseController
      */
     public function indexAction()
     {
-        return $this->render('CoreBundle:Duti:index.html.twig');
+        $projects = $this->get('repository.project')->findAll();
+
+        return $this->render('CoreBundle:Duti:index.html.twig', [
+            'currentProject' => $projects[0],
+            'projects' => $projects,
+        ]);
     }
 }

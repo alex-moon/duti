@@ -1,27 +1,28 @@
 <?php
-/**
- * @maintainer Alex Moon <alex.moon@printed.com>
- */
 
 namespace Duti\Bundle\Core\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Duti\Bundle\Core\Logical\StartedEndedTrait;
 
 /**
  * @ORM\Entity(repositoryClass="Duti\Bundle\Core\Repository\TaskRepository")
  * @ORM\Table(name="task")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Task extends NameEntity
 {
+    use StartedEndedTrait;
+
     /**
-     * @var Ticket
+     * @var Ticket $ticket
      * @ORM\ManyToOne(targetEntity="Duti\Bundle\Core\Entity\Ticket")
      * @ORM\JoinColumn(name="ticket_id", referencedColumnName="id", nullable=true)
      */
     protected $ticket;
 
     /**
-     * @var Project
+     * @var Project $project
      * @ORM\ManyToOne(targetEntity="Duti\Bundle\Core\Entity\Project")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
@@ -57,5 +58,22 @@ class Task extends NameEntity
     public function setProject($project)
     {
         $this->project = $project;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFinished()
+    {
+        return $this->ended !== null;
+    }
+
+    /**
+     * @return string
+     */
+    public function timeSoFar()
+    {
+        // @todo replace stub lol
+        return $this->created->format('g:i:s');
     }
 }

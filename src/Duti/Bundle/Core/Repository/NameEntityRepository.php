@@ -8,6 +8,7 @@ abstract class NameEntityRepository extends EntityRepository
 {
     /**
      * @param string $name
+     *
      * @return NameEntity
      */
     public function getOrCreateByName($name)

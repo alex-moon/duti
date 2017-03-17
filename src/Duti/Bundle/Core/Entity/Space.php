@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @maintainer Alex Moon <alex.moon@printed.com>
- */
-
 namespace Duti\Bundle\Core\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -15,5 +11,4 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Space extends NameEntity
 {
-
 }

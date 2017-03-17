@@ -1,0 +1,47 @@
+Duti\Bundle\Core\Entity\Space:
+    space.work:
+        __construct: [Work]
+
+Duti\Bundle\Core\Entity\Project:
+    project.bau:
+        __construct: [BAU]
+        space: '@space.work'
+        colour: blue
+    project.bugs:
+        __construct: [Bugs]
+        space: '@space.work'
+        colour: yellow
+    project.projects:
+        __construct: [Projects]
+        space: '@space.work'
+        colour: green
+
+Duti\Bundle\Core\Entity\Ticket:
+    ticket.bau-123:
+        url: https://tracker.example.com/BAU-123
+    ticket.bau-456:
+        url: https://tracker.example.com/BAU-456
+    ticket.bau-789:
+        url: https://tracker.example.com/BAU-789
+
+Duti\Bundle\Core\Entity\Task:
+    task.dashboard-perms:
+        __construct: [Work out why user dashboard isn't showing link to perms]
+        ticket: '@ticket.bau-123'
+        project: '@project.bau'
+    task.set-up-operms:
+        __construct: [Set up perms for Alice Toklas]
+        ticket: '@ticket.bau-123'
+        project: '@project.bau'
+    task.restrict-user-selections:
+        __construct: [Implement selections restriction]
+        ticket: '@ticket.bau-456'
+        project: '@project.bau'
+    task.investigate-bug:
+        __construct: [Figure out user selections aren't showing in admin]
+        ticket: '@ticket.bau-789'
+        project: '@project.bugs'
+    task.solve-bug:
+        __construct: [Implement fix for selections in admin bug]
+        ticket: '@ticket.bau-789'
+        project: '@project.bugs'

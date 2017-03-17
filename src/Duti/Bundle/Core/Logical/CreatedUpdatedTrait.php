@@ -39,16 +39,17 @@ trait CreatedUpdatedTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setCreated($created)
     {
         $this->created = $created;
+
         return $this;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getCreated()
     {
@@ -56,16 +57,17 @@ trait CreatedUpdatedTrait
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+
         return $this;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getUpdated()
     {

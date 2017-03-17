@@ -1,7 +1,4 @@
 <?php
-/**
- * @maintainer Alex Moon <alex.moon@printed.com>
- */
 
 namespace Duti\Bundle\Core\Logical;
 
@@ -10,13 +7,15 @@ use Doctrine\ORM\Mapping as ORM;
 trait StartedEndedTrait
 {
     /**
-     * @ORM\Column(name="started", type="datetime")
+     * @ORM\Column(name="started", type="datetime", nullable=true)
+     *
      * @var \DateTime $started
      */
     protected $started;
 
     /**
-     * @ORM\Column(name="ended", type="datetime")
+     * @ORM\Column(name="ended", type="datetime", nullable=true)
+     *
      * @var \DateTime $ended
      */
     protected $ended;

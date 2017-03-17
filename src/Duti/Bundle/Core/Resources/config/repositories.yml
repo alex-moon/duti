@@ -3,5 +3,11 @@ services:
     repository.space:
         class: Duti\Bundle\Core\Repository\SpaceRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
-        arguments: [Duti\Bundle\Core\Entity\DataSource]
+        arguments: [Duti\Bundle\Core\Entity\Space]
+
+    repository.project:
+        class: Duti\Bundle\Core\Repository\ProjectRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\Project]
+
 

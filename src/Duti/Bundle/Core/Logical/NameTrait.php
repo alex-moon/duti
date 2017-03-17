@@ -1,7 +1,4 @@
 <?php
-/**
- * @maintainer Alex Moon <alex.moon@printed.com>
- */
 
 namespace Duti\Bundle\Core\Logical;
 
@@ -10,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 trait NameTrait
 {
     /**
-     * @ORM\Column(name="name", type="string")
      * @var string $name
+     * @ORM\Column(name="name", type="string")
      */
     protected $name;
 
