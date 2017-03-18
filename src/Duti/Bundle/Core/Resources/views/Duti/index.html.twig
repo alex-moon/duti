@@ -29,7 +29,7 @@
                 {% if currentProject.unfinishedTasks %}
                     {% for task in currentProject.unfinishedTasks %}
                         <tr>
-                            <td>{{ task.name }}</td>
+                            <td><a{% if task.ticket %} href="{{ task.ticket.url }}"{% endif %}>{{ task.name }}</a></td>
                             <td>{{ task.timeSoFar }}</td>
                             <td style="white-space: nowrap">
                                 <ul class="list-inline">
