@@ -4,6 +4,7 @@
 <div id="wrapper" class="blue">
     <div class="container">
         <form method="post" class="form-horizontal">
+            <p><strong>{{ "now"|date("H:i:s l j F") }} - total: 1:23:45</strong></p>
             <div class="form-group">
                 <label class="col-xs-2 control-label">Doing:</label>
                 <div class="col-xs-5">{{ currentProject.name }}</div>
@@ -24,7 +25,6 @@
                     <button class="btn-primary btn form-control">Go</button>
                 </div>
             </div>
-            <h2>Tasks</h2>
             <table class="table table-striped" style="background: white">
                 {% if currentProject.unfinishedTasks %}
                     {% for task in currentProject.unfinishedTasks %}
