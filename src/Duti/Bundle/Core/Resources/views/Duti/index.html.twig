@@ -7,28 +7,28 @@
             <p><strong>{{ "now"|date("H:i:s l j F") }} - total: 1:23:45</strong></p>
             <div class="form-group">
                 <label class="col-xs-2 control-label">Doing:</label>
-                <div class="col-xs-5">{{ currentProject.name }}</div>
+                <div class="col-xs-5">{{ space.currentProject.name }}</div>
                 <div class="col-xs-5">12:34:56</div>
             </div>
             <div class="form-group">
-                <label for="do" class="col-xs-2 control-label">Do:</label>
+                <label for="currentProject" class="col-xs-2 control-label">Do:</label>
                 <div class="col-xs-5">
-                    <select name="do" id="do" class="form-control">
-                        {% for project in projects %}
-                            {% if project != currentProject %}
+                    <select name="currentProject" id="currentProject" class="form-control">
+                        {% for project in space.projects %}
+                            {% if project != space.currentProject %}
                                 <option value="{{ project.id }}">{{ project.name }}</option>
                             {% endif %}
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-xs-5">
-                    <button class="btn-primary btn form-control">Go</button>
+                    <button class="btn-primary btn form-control" type="submit" name="action" value="setCurrentProject">Go</button>
                 </div>
             </div>
             <table class="table table-striped" style="background: white">
-                {% if currentProject.unfinishedTasks %}
-                    {% for task in currentProject.unfinishedTasks %}
-                        <tr>
+                {% if space.currentProject.unfinishedTasks %}
+                    {% for task in space.currentProject.unfinishedTasks %}
+                        <tr {% if task == space.currentProject.currentTask %}style="background: #ffddcc"{% endif %}>
                             <td><a{% if task.ticket %} href="{{ task.ticket.url }}"{% endif %}>{{ task.name }}</a></td>
                             <td>{{ task.timeSoFar }}</td>
                             <td style="white-space: nowrap">
@@ -41,7 +41,7 @@
                         </tr>
                     {% endfor %}
                 {% else %}
-                    <tr><td>There are no unfinished tasks in {{ currentProject }}</td></tr>
+                    <tr><td>There are no unfinished tasks in {{ space.currentProject }}</td></tr>
                 {% endif %}
             </table>
         </form>

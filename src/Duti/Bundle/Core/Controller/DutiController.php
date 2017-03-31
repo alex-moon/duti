@@ -2,6 +2,9 @@
 
 namespace Duti\Bundle\Core\Controller;
 
+use Duti\Bundle\Core\Entity\Project;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DutiController extends BaseController
@@ -12,13 +15,22 @@ class DutiController extends BaseController
      *     path="/"
      * )
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $projects = $this->get('repository.project')->findAll();
+        $space = $this->spaceRepo->getCurrent();
+        $action = $request->request->get('action');
+        switch ($action) {
+            case 'setCurrentProject':
+                /** @var Project $currentProject */
+                $currentProject = $this->projectRepo->find(
+                    $request->request->get('currentProject')
+                );
+                $space->setCurrentProject($currentProject);
+                $this->spaceRepo->save($space);
+        }
 
         return $this->render('CoreBundle:Duti:index.html.twig', [
-            'currentProject' => $projects[0],
-            'projects' => $projects,
+            'space' => $space
         ]);
     }
 }

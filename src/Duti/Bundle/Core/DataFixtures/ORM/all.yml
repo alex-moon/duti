@@ -1,6 +1,7 @@
 Duti\Bundle\Core\Entity\Space:
     space.work:
         __construct: [Work]
+        isCurrent: true
 
 Duti\Bundle\Core\Entity\Project:
     project.bau:
@@ -29,19 +30,24 @@ Duti\Bundle\Core\Entity\Task:
         __construct: [Work out why user dashboard isn't showing link to perms]
         ticket: '@ticket.bau-123'
         project: '@project.bau'
+        urgency: 0
     task.set-up-operms:
         __construct: [Set up perms for Alice Toklas]
         ticket: '@ticket.bau-123'
         project: '@project.bau'
+        urgency: 2
     task.restrict-user-selections:
         __construct: [Implement selections restriction]
         ticket: '@ticket.bau-456'
         project: '@project.bau'
+        urgency: 2
     task.investigate-bug:
         __construct: [Figure out user selections aren't showing in admin]
         ticket: '@ticket.bau-789'
         project: '@project.bugs'
+        urgency: 1
     task.solve-bug:
         __construct: [Implement fix for selections in admin bug]
         ticket: '@ticket.bau-789'
         project: '@project.bugs'
+        urgency: 2

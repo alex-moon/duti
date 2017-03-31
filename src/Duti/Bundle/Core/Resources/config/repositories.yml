@@ -10,4 +10,7 @@ services:
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [Duti\Bundle\Core\Entity\Project]
 
-
+    repository.task:
+        class: Duti\Bundle\Core\Repository\TaskRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\Task]
