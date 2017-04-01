@@ -1,0 +1,7 @@
+
+services:
+    core.manager.break_log:
+        class: Duti\Bundle\Core\Manager\BreakLogManager
+        arguments:
+            - '@core.factory.break_log'
+            - '@core.repository.break_log'

@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 trait StartedEndedTrait
 {
+    use TimeTrait;
+
     /**
      * @ORM\Column(name="started", type="datetime", nullable=true)
      *

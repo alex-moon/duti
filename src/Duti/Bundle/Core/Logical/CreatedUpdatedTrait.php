@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 trait CreatedUpdatedTrait
 {
+    use TimeTrait;
+
     /**
      * @var \DateTime $createdDate
      * @ORM\Column(name="created", type="datetime")

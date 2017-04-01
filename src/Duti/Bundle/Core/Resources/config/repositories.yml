@@ -1,16 +1,21 @@
 
 services:
-    repository.space:
+    core.repository.space:
         class: Duti\Bundle\Core\Repository\SpaceRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [Duti\Bundle\Core\Entity\Space]
 
-    repository.project:
+    core.repository.project:
         class: Duti\Bundle\Core\Repository\ProjectRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [Duti\Bundle\Core\Entity\Project]
 
-    repository.task:
+    core.repository.task:
         class: Duti\Bundle\Core\Repository\TaskRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [Duti\Bundle\Core\Entity\Task]
+
+    core.repository.break_log:
+        class: Duti\Bundle\Core\Repository\BreakLogRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\BreakLog]

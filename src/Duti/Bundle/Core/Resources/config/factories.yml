@@ -1,0 +1,6 @@
+
+services:
+    core.factory.break_log:
+        class: Duti\Bundle\Core\Factory\BreakLogFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\BreakLog]]

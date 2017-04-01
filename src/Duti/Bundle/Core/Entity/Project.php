@@ -25,13 +25,6 @@ class Project extends NameEntity
     protected $colour;
 
     /**
-     * @var Task $currentTask
-     * @ORM\OneToOne(targetEntity="Task")
-     * @ORM\JoinColumn(name="current_task_id", referencedColumnName="id")
-     */
-    protected $currentTask;
-
-    /**
      * @var Task[] $tasks
      * @ORM\OneToMany(targetEntity="Duti\Bundle\Core\Entity\Task", mappedBy="project")
      * @ORM\OrderBy({"urgency" = "ASC"})
@@ -87,37 +80,17 @@ class Project extends NameEntity
     }
 
     /**
-     * @return Task
+     * @return Task|null
      * @throws \Exception
      */
     public function getCurrentTask()
     {
-        if (empty($this->tasks)) {
-            throw new \Exception(sprintf(
-                "Cannot get current task for project %s because it has no tasks",
-                $this
-            ));
+        foreach ($this->tasks as $task) {
+            if ($task->isInProgress()) {
+                return $task;
+            }
         }
-        if (is_null($this->currentTask)) {
-            $this->currentTask = $this->tasks[0];
-        }
-        return $this->currentTask;
-    }
-
-    /**
-     * @param Task $currentTask
-     * @throws \Exception
-     */
-    public function setCurrentTask($currentTask)
-    {
-        if (! in_array($currentTask, $this->tasks)) {
-            throw new \Exception(sprintf(
-                "Task %s not in project %s cannot be current task",
-                $currentTask,
-                $this
-            ));
-        }
-        $this->currentTask = $currentTask;
+        return null;
     }
 
     /**

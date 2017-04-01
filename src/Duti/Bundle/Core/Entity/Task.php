@@ -18,7 +18,7 @@ class Task extends NameEntity
     const TO_DO_SOONER = 1;
     const TO_DO_LATER = 2;
 
-    public function getUrgencies()
+    public static function getUrgencies()
     {
         return [
             self::TO_DO_NOW,
@@ -48,6 +48,12 @@ class Task extends NameEntity
     protected $project;
 
     /**
+     * @var TaskLog[] $taskLogs
+     * @ORM\OneToMany(targetEntity="Duti\Bundle\Core\Entity\TaskLog", mappedBy="task")
+     */
+    protected $taskLogs;
+
+    /**
      * @return int
      */
     public function getUrgency()
@@ -61,7 +67,7 @@ class Task extends NameEntity
      */
     public function setUrgency($urgency)
     {
-        if (! in_array($urgency, $this->getUrgencies())) {
+        if (! in_array($urgency, static::getUrgencies())) {
             throw new \Exception(sprintf(
                 'Invalid urgency level %s',
                 $urgency
@@ -113,9 +119,41 @@ class Task extends NameEntity
     /**
      * @return string
      */
-    public function timeSoFar()
+    public function getTimeSoFar()
     {
-        // @todo replace stub lol
-        return $this->created->format('g:i:s');
+        $timeSoFar = 0;
+        foreach ($this->taskLogs as $taskLog) {
+            $timeSoFar += $taskLog->getTimeSoFar();
+        }
+        return $this->getTimeString($timeSoFar);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isInProgress()
+    {
+        foreach ($this->taskLogs as $taskLog) {
+            if ($taskLog->getStarted() && $taskLog->getEnded() === null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return TaskLog[]
+     */
+    public function getTaskLogs()
+    {
+        return $this->taskLogs;
+    }
+
+    /**
+     * @param TaskLog $taskLog
+     */
+    public function addTaskLog($taskLog)
+    {
+        $this->taskLogs[] = $taskLog;
     }
 }

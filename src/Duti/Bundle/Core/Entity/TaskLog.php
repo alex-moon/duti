@@ -33,4 +33,16 @@ class TaskLog extends TimeLog
     {
         $this->task = $task;
     }
+
+    /**
+     * @return int - time so far in seconds
+     */
+    public function getTimeSoFar()
+    {
+        if ($this->started === null) {
+            return 0;
+        }
+        $end = $this->ended ?: new \DateTime();
+        return $end->getTimestamp() - $this->started->getTimestamp();
+    }
 }
