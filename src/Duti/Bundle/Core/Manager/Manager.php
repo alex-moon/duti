@@ -6,6 +6,7 @@
 namespace Duti\Bundle\Core\Manager;
 
 use Duti\Bundle\Core\Entity\Entity;
+use Duti\Bundle\Core\Exception\EntityNotFoundException;
 use Duti\Bundle\Core\Factory\EntityFactory;
 use Duti\Bundle\Core\Repository\EntityRepository;
 
@@ -33,6 +34,16 @@ abstract class Manager
     {
         $entity = $this->factory->create();
         $this->repository->save($entity, $flush);
+        return $entity;
+    }
+
+    public function findOrThrow($id)
+    {
+        // @todo should the manager be entity class-aware? Maybe!
+        $entity = $this->repository->find($id);
+        if ($entity === null) {
+            throw EntityNotFoundException::forClassAndId(static::class, $id);
+        }
         return $entity;
     }
 }

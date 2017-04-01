@@ -1,8 +1,15 @@
 services:
-    core.service.duti:
-        class: Duti\Bundle\Core\Service\DutiService
+    core.service.space:
+        class: Duti\Bundle\Core\Service\SpaceService
         arguments:
+            - '@doctrine.orm.entity_manager'
             - '@core.manager.space'
+            - '@core.service.project'
+
+    core.service.project:
+        class: Duti\Bundle\Core\Service\ProjectService
+        arguments:
+            - '@doctrine.orm.entity_manager'
             - '@core.manager.project'
             - '@core.manager.task'
             - '@core.manager.task_log'

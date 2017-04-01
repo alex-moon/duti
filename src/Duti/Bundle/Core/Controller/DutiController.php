@@ -21,20 +21,15 @@ class DutiController extends BaseController
      */
     public function indexAction(Request $request)
     {
-        $space = $this->spaceRepo->getCurrent();
-        $action = $request->request->get('action');
-        switch ($action) {
+        switch ($request->request->get('action')) {
             case 'setCurrentProject':
-                /** @var Project $currentProject */
-                $currentProject = $this->projectRepo->find(
+                $this->spaceService->setCurrentProjectById(
                     $request->request->get('currentProject')
                 );
-                $space->setCurrentProject($currentProject);
-                $this->spaceRepo->save($space);
         }
 
         return $this->render('CoreBundle:Duti:index.html.twig', [
-            'space' => $space
+            'space' => $this->spaceService->getCurrent()
         ]);
     }
 
@@ -50,6 +45,8 @@ class DutiController extends BaseController
      */
     public function clockAction(Request $request, $taskId)
     {
+        // @todo extract this all out to a service - probably the SpaceService,
+        // right? A single point of entry would be agreeable... sleep on it
         $space = $this->spaceRepo->getCurrent();
         $project = $space->getCurrentProject();
         $currentTask = $project->getCurrentTask();
@@ -78,7 +75,6 @@ class DutiController extends BaseController
             }
         }
 
-        $this->flush();
         return $this->redirectToRoute('core-duti-index');
     }
 }
