@@ -23,16 +23,19 @@ class EntityFactory
     public function create()
     {
         $entity = $this->getConstructedEntity();
+
         return $this->prepare($entity);
     }
 
     /**
      * @param string $entity
+     *
      * @return $this
      */
     public function setEntity($entity)
     {
         $this->entity = $entity;
+
         return $this;
     }
 
@@ -41,19 +44,22 @@ class EntityFactory
      */
     public function getConstructedEntity()
     {
-        return new $this->entity;
+        return new $this->entity();
     }
 
     /**
      * @param Entity $entity
+     *
      * @return Entity
+     *
      * @throws WrongEntityException
      */
     public function prepare(Entity $entity)
     {
-        if (! $entity instanceof $this->entity) {
+        if (!$entity instanceof $this->entity) {
             throw WrongEntityException::forExpected($this->entity);
         }
+
         return $entity;
     }
 }

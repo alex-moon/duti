@@ -10,7 +10,7 @@ class WrongEntityException extends FactoryException
     public static function forExpected($expected)
     {
         return new self(sprintf(
-            "Wrong entity class - expected %s",
+            'Wrong entity class - expected %s',
             $expected
         ));
     }

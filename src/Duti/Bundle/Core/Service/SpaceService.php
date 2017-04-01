@@ -23,8 +23,7 @@ class SpaceService extends Service
         EntityManager $entityManager,
         SpaceManager $spaceManager,
         ProjectService $projectService
-    )
-    {
+    ) {
         parent::__construct($entityManager);
         $this->spaceManager = $spaceManager;
         $this->projectService = $projectService;

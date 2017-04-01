@@ -63,16 +63,17 @@ class Task extends NameEntity
 
     /**
      * @param int $urgency
+     *
      * @throws \Exception
      */
     public function setUrgency($urgency)
     {
-        if (! in_array($urgency, static::getUrgencies())) {
+        if (!in_array($urgency, static::getUrgencies())) {
             throw new \Exception(sprintf(
                 'Invalid urgency level %s',
                 $urgency
             ));
-        };
+        }
         $this->urgency = $urgency;
     }
 
@@ -125,6 +126,7 @@ class Task extends NameEntity
         foreach ($this->taskLogs as $taskLog) {
             $timeSoFar += $taskLog->getTimeSoFar();
         }
+
         return $this->getTimeString($timeSoFar);
     }
 
@@ -138,6 +140,7 @@ class Task extends NameEntity
                 return true;
             }
         }
+
         return false;
     }
 

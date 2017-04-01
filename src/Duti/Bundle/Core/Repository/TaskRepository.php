@@ -10,5 +10,4 @@ use Duti\Bundle\Core\Entity\Task;
  */
 class TaskRepository extends NameEntityRepository
 {
-
 }

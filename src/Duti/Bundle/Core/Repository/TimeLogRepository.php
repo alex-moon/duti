@@ -10,6 +10,4 @@ use Duti\Bundle\Core\Entity\TimeLog;
  */
 class TimeLogRepository extends EntityRepository
 {
-
 }
-

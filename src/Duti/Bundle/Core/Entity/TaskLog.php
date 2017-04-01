@@ -43,6 +43,7 @@ class TaskLog extends TimeLog
             return 0;
         }
         $end = $this->ended ?: new \DateTime();
+
         return $end->getTimestamp() - $this->started->getTimestamp();
     }
 }

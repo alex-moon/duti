@@ -27,13 +27,15 @@ abstract class Manager
     }
 
     /**
-     * @param boolean|null $flush
+     * @param bool|null $flush
+     *
      * @return Entity
      */
     public function create($flush = false)
     {
         $entity = $this->factory->create();
         $this->repository->save($entity, $flush);
+
         return $entity;
     }
 
@@ -44,6 +46,7 @@ abstract class Manager
         if ($entity === null) {
             throw EntityNotFoundException::forClassAndId(static::class, $id);
         }
+
         return $entity;
     }
 }

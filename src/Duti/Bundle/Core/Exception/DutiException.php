@@ -7,5 +7,4 @@ namespace Duti\Bundle\Core\Exception;
 
 class DutiException extends \Exception
 {
-
 }

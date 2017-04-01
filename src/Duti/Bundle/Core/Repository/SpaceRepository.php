@@ -11,18 +11,20 @@ class SpaceRepository extends NameEntityRepository
 {
     /**
      * @return Space
+     *
      * @throws \Exception
      */
     public function getCurrent()
     {
         $currents = $this->findBy([
-            'isCurrent' => true
+            'isCurrent' => true,
         ]);
         if (count($currents) > 1) {
             throw new \Exception(sprintf(
-                "More than one current space found :("
+                'More than one current space found :('
             ));
         }
+
         return $currents[0];
     }
 }

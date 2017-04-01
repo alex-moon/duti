@@ -7,5 +7,4 @@ namespace Duti\Bundle\Core\Exception;
 
 class FactoryException extends DutiException
 {
-
 }

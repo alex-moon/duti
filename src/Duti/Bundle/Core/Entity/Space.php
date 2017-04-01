@@ -15,7 +15,8 @@ class Space extends NameEntity
 {
     /**
      * @todo replace this with a foreign key on user/session/whatever
-     * @var boolean $isCurrent
+     *
+     * @var bool $isCurrent
      * @ORM\Column(name="is_current", type="boolean")
      * */
     protected $isCurrent;
@@ -42,7 +43,7 @@ class Space extends NameEntity
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function getIsCurrent()
     {
@@ -50,7 +51,7 @@ class Space extends NameEntity
     }
 
     /**
-     * @param boolean $isCurrent
+     * @param bool $isCurrent
      */
     public function setIsCurrent($isCurrent)
     {
@@ -59,31 +60,34 @@ class Space extends NameEntity
 
     /**
      * @return Project
+     *
      * @throws \Exception
      */
     public function getCurrentProject()
     {
         if (empty($this->projects)) {
             throw new \Exception(sprintf(
-                "Cannot get current project for %s because it has no projects",
+                'Cannot get current project for %s because it has no projects',
                 $this
             ));
         }
         if (is_null($this->currentProject)) {
             $this->currentProject = $this->projects[0];
         }
+
         return $this->currentProject;
     }
 
     /**
      * @param Project $currentProject
+     *
      * @throws \Exception
      */
     public function setCurrentProject($currentProject)
     {
-        if (! $this->projects->contains($currentProject)) {
+        if (!$this->projects->contains($currentProject)) {
             throw new \Exception(sprintf(
-                "Project %s not in space %s cannot be current project",
+                'Project %s not in space %s cannot be current project',
                 $currentProject,
                 $this
             ));

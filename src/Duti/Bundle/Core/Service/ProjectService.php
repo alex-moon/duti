@@ -39,8 +39,7 @@ class ProjectService extends Service
         TaskManager $taskManager,
         TaskLogManager $taskLogManager,
         BreakLogManager $breakLogManager
-    )
-    {
+    ) {
         parent::__construct($entityManager);
         $this->projectManager = $projectManager;
         $this->taskManager = $taskManager;

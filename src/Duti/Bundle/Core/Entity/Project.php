@@ -81,6 +81,7 @@ class Project extends NameEntity
 
     /**
      * @return Task|null
+     *
      * @throws \Exception
      */
     public function getCurrentTask()
@@ -90,6 +91,7 @@ class Project extends NameEntity
                 return $task;
             }
         }
+
         return null;
     }
 

@@ -2,9 +2,6 @@
 
 namespace Duti\Bundle\Core\Controller;
 
-use Duti\Bundle\Core\Entity\BreakLog;
-use Duti\Bundle\Core\Entity\Project;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +13,9 @@ class DutiController extends BaseController
      *     name="core-duti-index",
      *     path="/"
      * )
+     *
      * @param Request $request
+     *
      * @return Response
      */
     public function indexAction(Request $request)
@@ -29,7 +28,7 @@ class DutiController extends BaseController
         }
 
         return $this->render('CoreBundle:Duti:index.html.twig', [
-            'space' => $this->spaceService->getCurrent()
+            'space' => $this->spaceService->getCurrent(),
         ]);
     }
 
@@ -38,9 +37,12 @@ class DutiController extends BaseController
      *     name="core-duti-clock",
      *     path="/clock/{taskId}/"
      * )
+     *
      * @param Request $request
      * @param int $taskId
+     *
      * @return Response
+     *
      * @throws \Exception
      */
     public function clockAction(Request $request, $taskId)
