@@ -4,3 +4,38 @@ services:
         class: Duti\Bundle\Core\Factory\BreakLogFactory
         calls:
             - [setEntity, [Duti\Bundle\Core\Entity\BreakLog]]
+
+    core.factory.project:
+        class: Duti\Bundle\Core\Factory\ProjectFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\Project]]
+
+    core.factory.space:
+        class: Duti\Bundle\Core\Factory\SpaceFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\Space]]
+
+    core.factory.task_log:
+        class: Duti\Bundle\Core\Factory\TaskLogFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\TaskLog]]
+
+    core.factory.task:
+        class: Duti\Bundle\Core\Factory\TaskFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\Task]]
+
+    core.factory.ticket:
+        class: Duti\Bundle\Core\Factory\TicketFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\Ticket]]
+
+    core.factory.time_log:
+        class: Duti\Bundle\Core\Factory\TimeLogFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\TimeLog]]
+
+    core.factory.work_day:
+        class: Duti\Bundle\Core\Factory\WorkDayFactory
+        calls:
+            - [setEntity, [Duti\Bundle\Core\Entity\WorkDay]]

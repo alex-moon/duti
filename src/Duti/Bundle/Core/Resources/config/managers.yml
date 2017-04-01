@@ -5,3 +5,45 @@ services:
         arguments:
             - '@core.factory.break_log'
             - '@core.repository.break_log'
+
+    core.manager.project:
+        class: Duti\Bundle\Core\Manager\ProjectManager
+        arguments:
+            - '@core.factory.project'
+            - '@core.repository.project'
+
+    core.manager.space:
+        class: Duti\Bundle\Core\Manager\SpaceManager
+        arguments:
+            - '@core.factory.space'
+            - '@core.repository.space'
+
+    core.manager.task_log:
+        class: Duti\Bundle\Core\Manager\TaskLogManager
+        arguments:
+            - '@core.factory.task_log'
+            - '@core.repository.task_log'
+
+    core.manager.task:
+        class: Duti\Bundle\Core\Manager\TaskManager
+        arguments:
+            - '@core.factory.task'
+            - '@core.repository.task'
+
+    core.manager.ticket:
+        class: Duti\Bundle\Core\Manager\TicketManager
+        arguments:
+            - '@core.factory.ticket'
+            - '@core.repository.ticket'
+
+    core.manager.time_log:
+        class: Duti\Bundle\Core\Manager\TimeLogManager
+        arguments:
+            - '@core.factory.time_log'
+            - '@core.repository.time_log'
+
+    core.manager.work_day:
+        class: Duti\Bundle\Core\Manager\WorkDayManager
+        arguments:
+            - '@core.factory.work_day'
+            - '@core.repository.work_day'

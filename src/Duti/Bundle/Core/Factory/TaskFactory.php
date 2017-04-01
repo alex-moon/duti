@@ -2,7 +2,7 @@
 
 namespace Duti\Bundle\Core\Factory;
 
-class BreakLogFactory extends EntityFactory
+class TaskFactory extends EntityFactory
 {
 
 }

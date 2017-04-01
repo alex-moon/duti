@@ -1,3 +1,9 @@
 services:
-    core.service.space:
-        class: Duti\Bundle\Core\Service\SpaceService
+    core.service.duti:
+        class: Duti\Bundle\Core\Service\DutiService
+        arguments:
+            - '@core.manager.space'
+            - '@core.manager.project'
+            - '@core.manager.task'
+            - '@core.manager.task_log'
+            - '@core.manager.break_log'

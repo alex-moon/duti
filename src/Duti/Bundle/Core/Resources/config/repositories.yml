@@ -1,21 +1,41 @@
 
 services:
-    core.repository.space:
-        class: Duti\Bundle\Core\Repository\SpaceRepository
+    core.repository.break_log:
+        class: Duti\Bundle\Core\Repository\BreakLogRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
-        arguments: [Duti\Bundle\Core\Entity\Space]
+        arguments: [Duti\Bundle\Core\Entity\BreakLog]
 
     core.repository.project:
         class: Duti\Bundle\Core\Repository\ProjectRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [Duti\Bundle\Core\Entity\Project]
 
+    core.repository.space:
+        class: Duti\Bundle\Core\Repository\SpaceRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\Space]
+
+    core.repository.task_log:
+        class: Duti\Bundle\Core\Repository\TaskLogRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\TaskLog]
+
     core.repository.task:
         class: Duti\Bundle\Core\Repository\TaskRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
         arguments: [Duti\Bundle\Core\Entity\Task]
 
-    core.repository.break_log:
-        class: Duti\Bundle\Core\Repository\BreakLogRepository
+    core.repository.ticket:
+        class: Duti\Bundle\Core\Repository\TicketRepository
         factory: ["@doctrine.orm.entity_manager", getRepository]
-        arguments: [Duti\Bundle\Core\Entity\BreakLog]
+        arguments: [Duti\Bundle\Core\Entity\Ticket]
+
+    core.repository.time_log:
+        class: Duti\Bundle\Core\Repository\TimeLogRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\TimeLog]
+
+    core.repository.work_day:
+        class: Duti\Bundle\Core\Repository\WorkDayRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
+        arguments: [Duti\Bundle\Core\Entity\WorkDay]
